@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace FeedbackService.Controllers
+namespace FeedbackService.Api.V1.Controllers
 {
     [ApiController]
     [Route("[controller]")]
