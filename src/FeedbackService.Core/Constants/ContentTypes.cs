@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace FeedbackService.Core.Constants
 {
-    internal class ContentTypes
+    public class ContentTypes
     {
     }
 }
