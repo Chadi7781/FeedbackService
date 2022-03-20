@@ -1,35 +1,191 @@
-# FeedbackService Clean Architecture ASP NET 6 
-Dans cet Projet, nous accomplirons les tâches suivantes :
-
-Prérequis (outils de développement)
-Créer un nouveau dépôt Git
-Cloner le code source de Git
-Ouvrir des projets en mode administrateur
-Créer des dossiers src et test
-Créer une API Web .NET Core 6
-Créer une bibliothèque de classes .NET Core pour Core
-Créer une bibliothèque de classes .NET Core pour l'infrastructure
-Créer un projet .Xunit pour l'API
-Créer un projet .Xunit pour Core
-Créer un projet .Xunit pour l'infrastructure
-Pousser le code dans Git
-Extraire le code de Git
-Valider les modifications dans Git distant
-Créer des branches de fonctionnalité
-
+ <img align="left" width="116" height="116" src="https://raw.githubusercontent.com/JasonGT/CleanArchitecture/master/.github/icon.png" />
  
-Créer une structure de dossiers et des fichiers pour l'API
-Créer une structure de dossiers et des fichiers pour Core
-Créer une structure de dossiers et des fichiers pour l'infrastructure
-Ajouter des références de projet (Références internes)
-Ajouter des packages Nuget (références externes)
-Créer un fichier .gitignore
-Créer un fichier .gitattribute
-Ajouter la classe DbContext
-Ajouter une entité de base de données
-Ajouter le modèle Core Dto
-Ajouter des constantes
-Ajouter des interfaces
-Ajouter une classe de référentiel
-Ajouter une classe de service
-Ajouter une classe de contrôleur
+ # Clean Architecture Solution Template
+[![Clean.Architecture.Solution.Template NuGet Package](https://img.shields.io/badge/nuget-1.0.5-blue)](https://www.nuget.org/packages/Clean.Architecture.Solution.Template)
+[![Twitter Follow](https://img.shields.io/twitter/follow/jasongtau.svg?style=social&label=Follow)](https://twitter.com/jasongtau)
+
+<br/>
+
+This is a solution template for creating a Single Page App (SPA) with Angular 8 and ASP.NET Core 3 following the principles of Clean Architecture. Create a new project based on this template by clicking the above **Use this template** button or by installing and running the associated NuGet package (see Getting Started for full details). 
+
+
+## Technologies
+* .NET Core 6
+* ASP .NET Core 6
+* Entity Framework Core 6
+* React Js (comming soon)
+
+## Getting Started
+
+The easiest way to get started is to install the [NuGet package](https://www.nuget.org/packages/Clean.Architecture.Solution.Template) and run `dotnet new ca-sln`:
+
+1. Install the latest [.NET Core SDK](https://dotnet.microsoft.com/download)
+2. Run `dotnet new --install Clean.Architecture.Solution.Template` to install the project template
+3. Run `dotnet new ca-sln` to create a new project
+4. Navigate to `src/WebUI` and run `dotnet run` to launch the project
+
+## Overview
+
+### Domain
+
+This will contain all entities, enums, exceptions, interfaces, types and logic specific to the domain layer.
+
+
+### Application
+
+This layer contains all application logic. It is dependent on the domain layer, but has no dependencies on any other layer or project. This layer defines interfaces that are implemented by outside layers. For example, if the application need to access a notification service, a new interface would be added to application and an implementation would be created within infrastructure.
+
+
+### Infrastructure
+
+This layer contains classes for accessing external resources such as file systems, web services, smtp, and so on. These classes should be based on interfaces defined within the application layer.
+
+### WebUI
+
+This layer is a single page application based on Angular 8 and ASP.NET Core 3. This layer depends on both the Application and Infrastructure layers, however, the dependency on Infrastructure is only to support dependency injection. Therefore only *Startup.cs* should reference Infrastructure.
+
+## Support
+
+If you are having problems, please let us know by [raising a new issue](https://github.com/JasonGT/CleanArchitecture/issues/new/choose).
+
+## License
+
+This project is licensed with the [MIT license](LICENSE).
+
+
+
+
+
+
+ # My Feedback Project 
+
+
+
+
+Dans cet Projet, nous accomplirons les tâches suivantes :
+Create src & test folders
+
+Create ASP.NET Core Web API C# version FeedbackService.Api
+
+Create .NET Core class library for Core FeedbackService.Core
+
+Create .NET Core class library for Infrastructure FeedbackService.Infrastructure
+
+Create .Xunit project for API FeedbackService.Api.Tests
+
+Create .Xunit project for Core FeedbackService.Core.Tests
+
+Create .Xunit project for Infrastructure FeedbackService.Infrastructure.Tests
+
+Create .gitignore file
+
+Create .gitattribute file
+
+Push the code into Git
+
+Pull the code from Git
+
+Commit changes into remote Git
+
+Create new feature branch called feature-branches for next set of changes
+
+Create folder structure & files for API
+
+ApiConstants.cs
+AppSettings.cs
+DependencyInjection.cs
+FeedbackService.Api.xml
+KeyVaultCache.cs
+ServiceDescription.md
+ServiceExtensions.cs
+SwaggerConfiguration.cs
+Middlewares
+HttpCodeAndLogMiddleware.cs
+Helper
+MapperProfile.cs
+HealthCheck
+MemoryHealthCheck.cs
+HealthCheck
+RemoteHealthCheck.cs
+SwaggerExamples
+Requests
+FeedbackRequestExample.cs
+Response
+FeedbackResponseExample.cs
+V1
+Controllers
+FeedbackController.cs
+V2
+Controllers
+FeedbackController.cs
+Create folder structure & files for Core
+
+Constants
+ContentTypes.cs
+Exception
+Interfaces
+Models
+Services
+Exception
+ApiException.cs
+DomainException.cs
+NotFoundException.cs
+ValidationException.cs
+Interfaces
+Repositories
+IFeedbackRepository.cs
+Interfaces
+Services
+IFeedbackService.cs
+Models
+Feedback.cs
+Services -FeedbackService.cs
+Create folder structure & files for Infrastructure
+
+Context
+FeedbackDbContext.cs
+Entities
+Feedback.cs
+Repositories
+FeedbackRepository.cs
+Add project references (Internal references)
+
+Add dependencies in src
+API
+Core
+Infrastructure
+Swashbuckle.AspNetCore
+Core
+Newtonsoft.Json
+If any shared nuget packages comes here
+Infrastructure
+Core
+Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection -Version 8.1.1
+Install-Package Microsoft.EntityFrameworkCore -Version 6.0.9
+Install-Package Microsoft.EntityFrameworkCore.SqlServer -Version 6.0.9
+Install-Package Microsoft.EntityFrameworkCore.Design -Version 6.0.9
+Uninstall-Package Microsoft.EntityFrameworkCore.Design -Version 6.0.9
+Add dependencies in test
+FeedbackService.Api.Tests
+FeedbackService.Api
+FeedbackService.Core.Tests
+FeedbackService.Core
+FeedbackService.Infrastructure.Tests
+FeedbackService.Infrastructure
+Add model in infra called Feedback.cs
+
+Create DbContext classes & register in startup
+
+Create model in Core - Feedback.cs
+
+Create interface in Core - IFeedbackRepository.cs
+
+Create interface’s implementation in Infra - FeedbackRepository.cs
+
+Configure dependencies for repos
+
+Create Service interface & classes – IFeedbackService & FeedbackService
+
+Create Service classes - FeedbackService
+
+Create controller classes – FeedbackController
