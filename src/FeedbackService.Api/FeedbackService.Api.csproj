@@ -25,4 +25,10 @@
     <ProjectReference Include="..\FeedbackService.Infrastructure\FeedbackService.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="ServiceDescription.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
