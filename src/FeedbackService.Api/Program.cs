@@ -21,7 +21,14 @@ builder.Services.ConfigureCors();
 builder.Services.ConfigureDependencyInjection(builder.Configuration);
 
 
+
+
 builder.Services.AddControllers();
+
+//Configure Swagger by me :
+
+builder.Services.ConfigureSwagger();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -40,6 +47,14 @@ if(currentEnvironement?.Equals("Development", StringComparison.OrdinalIgnoreCase
     configurationBuilder.AddJsonFile($"appsettings.{currentEnvironement}.json", optional: true);
 }
 
+try
+{
+    
+}catch(Exception ex)
+{
+    throw;
+}
+
 
 
 
@@ -48,9 +63,15 @@ if(currentEnvironement?.Equals("Development", StringComparison.OrdinalIgnoreCase
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();
-    app.UseSwaggerUI();
+//    app.UseSwagger();
+  //  app.UseSwaggerUI();
+  app.UseDeveloperExceptionPage();  
 }
+
+
+//Configure Swagger also by me
+app.ConfigureSwagger();
+
 
 app.UseHttpsRedirection();
 
@@ -58,4 +79,4 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.Run();
+app.Run(); 
