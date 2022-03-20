@@ -189,3 +189,28 @@ Create Service interface & classes – IFeedbackService & FeedbackService
 Create Service classes - FeedbackService
 
 Create controller classes – FeedbackController
+
+##Auto Mapper
+What is AutoMapper?
+AutoMapper is a simple library that helps us to transform one object type to another. It is a convention-based object-to-object mapper that requires very little configuration. 
+
+The object-to-object mapping works by transforming an input object of one type into an output object of a different type.
+
+One Use Case
+AutoMapper was built to solve a complex problem that most developers face in their day-to-day life – writing code that maps one object type to another. This type of code is rather tedious and boring to write, so why not leave that job to this little tool?
+
+What makes AutoMapper interesting is that it provides some easy to use conventions to take the dirty work out of figuring out how to map Type A to Type B. As long as Type B follows AutoMapper’s established conventions, almost no configuration is needed to map two types.
+
+Here’s one common scenario. We’ve created an application and we want to keep the separation between our domain models and our view models. 
+
+In order to accomplish this, we need to write the code to adapt our domain model to our view model. Then, as we add more views and domain models, we end up writing more adapters. Later on, we’ll have to write even more adapters to map our data transfer objects from the database layer into our domain objects. 
+
+This is mundane and repetitive. And this is where AutoMapper comes in.
+
+How to Use AutoMapper in Our Application
+Let’s have a look at how to add Automapper into our .NET Core application.
+
+Installation
+The first step is to install the corresponding NuGet package:
+
+Install-Package AutoMapper.Extensions.Microsoft.DependencyInjection
