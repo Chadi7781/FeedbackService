@@ -190,7 +190,7 @@ Create Service classes - FeedbackService
 
 Create controller classes – FeedbackController
 
-##Auto Mapper
+## Auto Mapper
 What is AutoMapper?
 AutoMapper is a simple library that helps us to transform one object type to another. It is a convention-based object-to-object mapper that requires very little configuration. 
 
