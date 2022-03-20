@@ -1,4 +1,5 @@
 using AutoMapper;
+using FeedbackService.Api;
 using FeedbackService.Core.Services;
 using FeedbackService.Infrastructure;
 using FeedbackService.Infrastructure.Interfaces.Repositories;
@@ -9,6 +10,17 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
+
+
+
+// Configure Cors   
+builder.Services.ConfigureCors();
+
+
+// Configure Dependency Injection
+builder.Services.ConfigureDependencyInjection(builder.Configuration);
+
+
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
@@ -16,13 +28,22 @@ builder.Services.AddSwaggerGen();
 
 
 
-
-builder.Services.AddDbContext<FeedbackDbContext>(opt => opt.UseInMemoryDatabase("InMem"));
-builder.Services.AddScoped<IFeedbackService, FeedbacksService>();
-builder.Services.AddScoped<IFeedbackRepository, FeedbackRepository>();
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();
+
+string currentEnvironement = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT");
+IConfigurationBuilder configurationBuilder = new ConfigurationBuilder().SetBasePath(Directory.GetCurrentDirectory()).AddJsonFile("appsettings.json", false, reloadOnChange: true);
+
+if(currentEnvironement?.Equals("Development", StringComparison.OrdinalIgnoreCase) == true)
+{
+    configurationBuilder.AddJsonFile($"appsettings.{currentEnvironement}.json", optional: true);
+}
+
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
