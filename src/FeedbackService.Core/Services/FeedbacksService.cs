@@ -1,5 +1,5 @@
 ﻿using FeedbackService.Core.Models;
-using FeedbackService.Infrastructure.Repositories;
+using FeedbackService.Infrastructure.Interfaces.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,14 +8,14 @@ using System.Threading.Tasks;
 
 namespace FeedbackService.Core.Services
 {
-    public class FeedbackService : IFeedbackService
+    public class FeedbacksService : IFeedbackService
 
 
     {
 
         private readonly IFeedbackRepository _feedbackRepository;
 
-        public FeedbackService( IFeedbackRepository feedbackRepository)
+        public FeedbacksService( IFeedbackRepository feedbackRepository)
         {
             _feedbackRepository = feedbackRepository ?? throw new ArgumentNullException(nameof(feedbackRepository));   
 

@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using FeedbackService.Core.Models;
+using FeedbackService.Infrastructure.Interfaces.Repositories;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace FeedbackService.Infrastructure.Repositories
 {
-    public class FeedbackRepositories : IFeedbackRepository
+    public class FeedbackRepository : IFeedbackRepository
 
 
     {
@@ -19,7 +20,7 @@ namespace FeedbackService.Infrastructure.Repositories
         private readonly FeedbackDbContext _dbContext;
 
         private readonly IMapper _mapper;
-        public FeedbackRepositories(FeedbackDbContext dbContext, IMapper mapper) 
+        public FeedbackRepository(FeedbackDbContext dbContext, IMapper mapper) 
         {
             _dbContext = dbContext ?? throw new ArgumentNullException(nameof(dbContext));
             _mapper = mapper ?? throw new ArgumentNullException(nameof(mapper));

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace FeedbackService.Infrastructure.Repositories
+namespace FeedbackService.Infrastructure.Interfaces.Repositories
 {
     public interface IFeedbackRepository
     {

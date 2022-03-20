@@ -14,8 +14,6 @@ namespace FeedbackService.Infrastructure.Entities
         [Required]
         public int Id { get; set; }
 
-        [Required]
-        public Guid UserId { get; set; }
 
         [Required]
         public string Subject { get; set; }
@@ -25,11 +23,6 @@ namespace FeedbackService.Infrastructure.Entities
         [Required]
 
         public int Rating { get; set; }
-        [Required]
-
-        public string CreatedBy { get; set; }
-        [Required]
-
-        public DateTime  CreatedDate  { get; set; }
+      
     }
 }
